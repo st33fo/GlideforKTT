@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+   >
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/messageboardCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="0dp"
+
+        app:cardMaxElevation="0dp"
+        app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/messageboardprofilepicture"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="10dp"
+                    android:src="@drawable/kttprofileicon" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingRight="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/nametimeLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/messageboardPersonName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:text="st33fo"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id = "@+id/messageBoardTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="5dp"
+                            android:textSize="12sp"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/colorTextSecondary"
+                            android:paddingStart="5dp"
+                            android:text="11:59 PM" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/quotelayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/nametimeLayout"
+                        android:paddingTop="5dp"
+
+                        android:paddingBottom="5dp">
+
+                        <TextView
+
+                            android:id="@+id/messageboardQuote"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:background="@drawable/quotebackgroundborder"
+                            android:text="IT'S NOT EVEN EFFING OUT IN MY COUNTRY - AUBZ" />
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/messageBoardMessage"
+                        android:layout_width="wrap_content"
+                        android:paddingBottom="8dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="And that's why I don't listen to that steaming pile of dirt so-so likes to pretend he is. But we all know he isn't one."/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

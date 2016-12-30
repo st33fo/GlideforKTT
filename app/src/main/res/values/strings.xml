@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">Glide for KTT</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Setting</string>
+    <string name="Kanye_West">Kanye West</string>
+    <string name="Saint_Pablo_Tour">Saint Pablo Tour</string>
+    <string name="Good_Music">Good Music</string>
+    <string name="Music">Music</string>
+    <string name="Album_Discussion">Album Discussion</string>
+    <string name="Rock_Indie">Rock/Indie</string>
+    <string name="Pop_RNB">Pop/R&amp;B</string>
+    <string name="TV_Film">TV &amp; Film</string>
+    <string name="Video_Games">Video Games</string>
+    <string name="Gadgets_Tech">Gadgets &amp; Tech</string>
+    <string name="Sports">Sports</string>
+    <string name="Life_Advice">Life &amp; Advice</string>
+    <string name="General_Discussion">General Discussion</string>
+    <string name="Relationship_Advice">Relationship Advice</string>
+    <string name="Fashion_Style">Fashion &amp; Style</string>
+    <string name="Marketplace">Marketplace</string>
+    <string name="Creative_Showcase">MCreative Showcase</string>
+    <string name="Art">Art</string>
+    <string name="Mixtapes">Mixtape</string>
+    <string name="Writing">Writing</string>
+    <string name="Drake">Drake</string>
+    <string name="Kendrick_Lamar">Kendrick Lamar</string>
+    <string name="The_Weeknd">The Weeknd</string>
+    <string name="Kid_Cudi">Kid Cudi</string>
+    <string name="Lupe_Fiasco">Lupe Fiasco</string>
+    <string name="Odd_Future">Odd Future</string>
+    <string name="Misc">Misc</string>
+    <string name="Classic_GG">Classic G&amp;G</string>
+    <string name="KTT_Help_and_Problems">KTT Help and Problems</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="Feed">Feed</string>
+    <string name="notifications">Notifications</string>
+    <string name="messages">Messages</string>
+    <string name="Kanye_Group_Header">Kanye</string>
+    <string name="General_Discussion_Header">General Discussion</string>
+    <string name="Other_Artists">Other Artists</string>
+    <string name="Offtopic_Header">Off Topic</string>
+    <string name="setting_title">Settings</string>
+    <string name="profile_name"><b>Profile Name</b></string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="action_refresh">Refresh Page</string>
+    <string name="Next_Page">Next Page</string>
+    <string name="action_help">Help</string>
+    <string name="action_search">Search</string>
+    <string name="Guest_Button"><b>Guest Login</b></string>
+    <string name="Login"><b>Login</b></string>
+    <string name="Register"><u><b>Register</b></u></string>
+    <string name="Description">Description</string>
+    <string name="title_activity_feed">Feed</string>
+    <string name="action_menu">Menu</string>
+    <string name="Person">Person</string>
+    <string name="Previous_Page">Previous Page</string>
+    <string name="action_next_page">Next Page</string>
+    <string name="action_previous_page">Previous Page</string>
+    <string name="action_reply">Reply</string>
+    <string name="MessageBoard">MessageBoard</string>
+    <string name="travisscott">Travis Scott</string>
+    <string name="Profile_Page">ProfilePage</string>
+    <string name="action_send">Send PM</string>
+    <string name="unfollow">Unfollow</string>
+    <string name="profilebutton">Profile</string>
+    <string name="soundcloud"><a href="http://www.soundcloud.com/stefan-petit-freres-jr">SoundCloud</a></string>
+    <string name="Info">Info</string>
+    <string name="AboutMe">About Me</string>
+    <string-array name="tabs">
+        <item>Posts</item>
+        <item>Topics</item>
+        <item>Followers</item>
+        </string-array>
+
+
+</resources>
