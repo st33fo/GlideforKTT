@@ -114,63 +114,63 @@ public class Feed extends AppCompatActivity  {
 
     }
 
-    public Document GetDocument(String site) throws Exception {
-        final Document[] doc = new Document[1];
-        final CountDownLatch cdl = new CountDownLatch(1);
-
-
-        StringRequest documentRequest = new StringRequest( //
-                Request.Method.GET, //
-                site, //
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        doc[0] = Jsoup.parse(response);
-
-                        cdl.countDown();
-                    }
-                }, //
-
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Error handling
-                        System.out.println("Houston we have a problem ... !");
-                        error.printStackTrace();
-                    }
-                }
-        ){
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36");
-                params.put("Cookie","PHPSESSID=" +sessionId);
-
-
-
-
-                return params;
-            }
-
-        };
-
-
-
-        if (myRequestQueue == null) {
-            myRequestQueue = Volley.newRequestQueue(this);
-        }
-
-        // Add the request to the queue...
-
-        myRequestQueue.add(documentRequest);
-
-        // ... and wait for the document.
-        // NOTA: Be aware of user experience here. We don't want to freeze the app...
-        cdl.await();
-
-        return doc[0];
-    }
+//    public Document GetDocument(String site) throws Exception {
+//        final Document[] doc = new Document[1];
+//        final CountDownLatch cdl = new CountDownLatch(1);
+//
+//
+//        StringRequest documentRequest = new StringRequest( //
+//                Request.Method.GET, //
+//                site, //
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        doc[0] = Jsoup.parse(response);
+//
+//                        cdl.countDown();
+//                    }
+//                }, //
+//
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        // Error handling
+//                        System.out.println("Houston we have a problem ... !");
+//                        error.printStackTrace();
+//                    }
+//                }
+//        ){
+//
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<String, String>();
+//                params.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36");
+//                params.put("Cookie","PHPSESSID=" +sessionId);
+//
+//
+//
+//
+//                return params;
+//            }
+//
+//        };
+//
+//
+//
+//        if (myRequestQueue == null) {
+//            myRequestQueue = Volley.newRequestQueue(this);
+//        }
+//
+//        // Add the request to the queue...
+//
+//        myRequestQueue.add(documentRequest);
+//
+//        // ... and wait for the document.
+//        // NOTA: Be aware of user experience here. We don't want to freeze the app...
+//        cdl.await();
+//
+//        return doc[0];
+//    }
 
 
 
@@ -193,7 +193,7 @@ public class Feed extends AppCompatActivity  {
 
             try {
 
-                profileDocument = GetDocument(URL);
+                profileDocument = new GetDocument(Feed.this).GetDocument(URL);
                 Elements lists = profileDocument.getElementsByClass("topicindex");
 
                 for (Element message : lists) {

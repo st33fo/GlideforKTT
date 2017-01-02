@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String profilePostLink ="http://www.kanyetothe.com/forum/index.php?action=profile;area=showposts";
     private String profileTopicsLink ="http://www.kanyetothe.com/forum/index.php?action=profile;area=showposts;sa=topics";
     /**
-     * Way to lazy to reload data since it's already here
+     * Way too lazy to reload data since it's already here
      * I'll take advantage of it here, but for other people goddamn it is gonna be a little harder...
      */
     private String profileName = "";
@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /**The commented out code below is just in case the app messes up and I want to delete the sharedpreference so it doesn't keep me logged in**/
 //    SecuredSharePreference.setCookies(MainActivity.this,"");
         //make sure the main activity doesn't skip this.
         setContentView(R.layout.activity_main);
