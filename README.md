@@ -50,7 +50,7 @@ Next is **messageboard.java**. Every thread clicked on in the main activity lead
 **ProfileFollowersFragment.java** is one of the 3 important fragments needed to make up the profile page in this application. A fragment is kind of like a sub-activity that can hold its own "things" and have its own ui like a normal activity. It can contain whatever you want in it, that includes recyclerviews. Fragments are important because sometimes the user wants to be able to see multiple clumps of different types of info in the same page without having to leave it or go back. It's a bit confusing, but hopefully you'll see what I'm trying to convey with this gif.
 
 
-[fragment example(https://gfycat.com/TepidBriefArrowworm)
+[fragment example](https://gfycat.com/TepidBriefArrowworm)
 
 The first fragment is the profilepostsfragment. This *inflates* or binds a layout in the res folder that features a recyclerview which stores the posts the user sends. The second fragment when you swipe to the left is the profiletopicsfragment. This one also inflates some layout that features a recyclerview that holds the topics you create. Finally another swipe lands you to the third fragment, the profilefollowersfragment which inflates a recyclerview layout with info on your followers. Notice how I didn't have to leave the ProfilePage.java activity which all of these fragments are under. You still see my profile name at the top. I just made these three quickly accessible with a couple of swipes. I could've made separate activities for them yes, but notice how that wouldn't be very efficient. Information like this should be grouped together. 
 
