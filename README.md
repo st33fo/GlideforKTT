@@ -1,6 +1,9 @@
 # GlideforKTT
 Alpha stage mobile application for Kanyetothe.com
+
 [My Subreddit: ask questions and report crashes or suggest improvements there!](https://reddit.com/r/glideforktt)
+
+
 I'll admit, I'm a mess when it comes to coding. That includes comments, which I'm trying my best to get better at. Apparently it helps to have em if you're working on and off on a project! It also makes it a lot clearer to read and understand whats going on. The purpose of this thread is for me to elaborate upon everything in that github page...or at least the things that are important to continuing this project.
 
 **What you see on [Github](https://github.com/st33fo/GlideforKTT)**
