@@ -106,11 +106,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         {
 
-
+        Log.i("System.out","There isn't something in the preferences");
             Intent i = new Intent(MainActivity.this, Login.class);
             startActivity(i);
 
         } else {
+            Log.i("System.out","There is something in the preferences");
             System.out.println(SecuredSharePreference.getPrefCookies(MainActivity.this));
             // Stay at the current activity.
             appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
@@ -260,20 +261,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        threadAdapter.notifyDataSetChanged();
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-//        clearData();
-//        new loadTopicData().execute();
-
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        threadAdapter.notifyDataSetChanged();
+//
+//    }
+//
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+////        clearData();
+////        new loadTopicData().execute();
+//
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

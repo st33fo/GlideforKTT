@@ -1,12 +1,14 @@
 package com.st33fo.glideforktt;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
 import android.net.wifi.p2p.WifiP2pManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,6 +51,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         ImageView image;
         TextView timeposted;
         Toolbar cardViewToolBar;
+        String link;
 
 
         FeedViewHolder(View itemView) {
@@ -93,13 +96,23 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     }
 
     @Override
-    public void onBindViewHolder(FeedViewHolder holder, int position) {
+    public void onBindViewHolder(FeedViewHolder holder, final int position) {
         FeedObject feedObject = getItem(position);
         holder.person.setText(feedObjectList.get(position).getPerson());
         holder.message.setText(feedObjectList.get(position).getMessage());
         holder.timeposted.setText(feedObjectList.get(position).getTimeposted());
         holder.title.setText(feedObjectList.get(position).getTitle());
         holder.quote.setText(feedObjectList.get(position).getQuote());
+        holder.link = feedObjectList.get(position).getLink();
+        holder.cardViewToolBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context,MessageBoard.class);
+                i.putExtra("URL",feedObjectList.get(position).getLink());
+                context.startActivity(i);
+            }
+        });
         if(feedObjectList.get(position).getQuote().equals(" ")){
            holder.quote.setVisibility(View.GONE);
         }else{

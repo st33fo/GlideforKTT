@@ -65,6 +65,7 @@
     <string name="action_send">Send PM</string>
     <string name="unfollow">Unfollow</string>
     <string name="profilebutton">Profile</string>
+    <string name = "crash_toast_text">Darn, the app just crashed. Email the crash report to the developer please!</string>
     <string name="soundcloud"><a href="http://www.soundcloud.com/stefan-petit-freres-jr">SoundCloud</a></string>
     <string name="Info">Info</string>
     <string name="AboutMe">About Me</string>

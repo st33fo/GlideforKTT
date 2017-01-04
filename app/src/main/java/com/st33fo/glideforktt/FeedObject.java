@@ -15,6 +15,7 @@ public class FeedObject {
     String image;
     String timeposted;
     String quote;
+    String link;
 
     FeedObject(){
         this.title = " ";
@@ -23,9 +24,10 @@ public class FeedObject {
         this.person = " ";
         this.timeposted = " ";
         this.quote = " ";
+        this.link = " ";
     }
 
-    FeedObject(String title, String message, String image, String person, String timeposted, String quote) {
+    FeedObject(String title, String message, String image, String person, String timeposted, String quote, String link) {
         this.title = title;
         this.message = message;
         this.image = image;
@@ -80,6 +82,14 @@ public class FeedObject {
 
     public void setQuote(String quote) {
         this.quote = quote;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }
 

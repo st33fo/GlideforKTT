@@ -202,9 +202,11 @@ public class Feed extends AppCompatActivity  {
                     Elements quotes = message.select("blockquote[class=bbc_standard_quote]");
                     String quoteheader =  message.select("div[class=quoteheader]").text();
                     String title = message.select("span[class=category_header]").text();
+                    String link = message.select("span[class=category_header]").select("a[href]").attr("href");
                     String timeposted = message.select("div[class=post_date]").text();
                     String post = message.select("div[class=post_body]").text();
                     String section = title.substring(title.indexOf("["),title.indexOf("]")+1);
+                    Log.i("System.out","The links are" +link);
 
                     title = title.replace(section,"");
                     title = title.replace("Re:","");
@@ -248,6 +250,7 @@ public class Feed extends AppCompatActivity  {
                     feed.setImage("");
                     feed.setTimeposted(timeposted);
                     feed.setMessage(post);
+                    feed.setLink(link);
                     feeds.add(feed);
 
 
