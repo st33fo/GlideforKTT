@@ -110,8 +110,6 @@ public class Feed extends AppCompatActivity  {
 
             }
         });
-
-
     }
 
 //    public Document GetDocument(String site) throws Exception {
