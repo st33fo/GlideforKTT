@@ -113,6 +113,15 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
                 context.startActivity(i);
             }
         });
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context,MessageBoard.class);
+                i.putExtra("URL",feedObjectList.get(position).getLink());
+                context.startActivity(i);
+            }
+        });
         if(feedObjectList.get(position).getQuote().equals(" ")){
            holder.quote.setVisibility(View.GONE);
         }else{

@@ -172,13 +172,7 @@ public class MessageBoard extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onBackPressed() {
-        clearData();
-        navPageNumber = 0;
-        super.onBackPressed();
-        finish();
-    }
+
 
     public void clearData() {
 
@@ -194,6 +188,7 @@ public class MessageBoard extends AppCompatActivity {
 
     private class getMessages extends AsyncTask<Void, Void, Void> {
         Document messageBoard;
+        String appbarTitle;
 
         @Override
         protected void onPreExecute() {
@@ -211,6 +206,7 @@ public class MessageBoard extends AppCompatActivity {
                 messageBoard = new GetDocument(MessageBoard.this).GetDocument(URL);
                 Elements messages = messageBoard.select("div.category.topicindex.topicview");
                 String navpages = messageBoard.select("div[id=board_top_info]").select("div[class=forum_pages]").select("strong").text();
+                appbarTitle = messageBoard.select("div[id=board_top_info]").select("h2[class=board_title]").text();
 
 
                 String cutURL = URL.substring(URL.lastIndexOf("."));
@@ -291,7 +287,7 @@ public class MessageBoard extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
+            getSupportActionBar().setTitle(appbarTitle);
             messageBoardAdapter = new MessageBoardAdapter(MessageBoard.this, messageBoardObjectList);
             recyclerView.setAdapter(messageBoardAdapter);
 
