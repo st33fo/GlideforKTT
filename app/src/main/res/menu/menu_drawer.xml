@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+        android:id="@+id/main_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/feed"
+            android:icon="@drawable/ic_whatshot_white_48dp"
+            android:title="@string/Feed" />
+        <item
+            android:id="@+id/notifications"
+            android:icon="@drawable/ic_public_white_48dp"
+            android:title="@string/notifications"
+
+
+            />
+
+
+        <item
+            android:id="@+id/messages"
+            android:icon="@drawable/ic_email_white_48dp"
+            android:title="@string/messages" />
+        <item
+            android:id="@+id/settings_nav_option"
+            android:icon="@drawable/ic_settings_white_48dp"
+            android:title="@string/setting_title" />
+
+
+        <item
+            android:id="@+id/Kanye_Group_Header"
+            android:title="@string/Kanye_Group_Header"
+
+            >
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/Kanye_West"
+                        android:title="@string/Kanye_West"
+
+                        />
+                    <item
+                        android:id="@+id/Saint_Pablo_Tour"
+                        android:title="@string/Saint_Pablo_Tour" />
+                    <item
+                        android:id="@+id/Good_Music"
+                        android:title="@string/Good_Music" />
+                </group>
+
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/General_Discussion_Header"
+            android:title="@string/General_Discussion_Header">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/Music"
+                        android:title="@string/Music" />
+                    <item
+                        android:id="@+id/Album_Discussion"
+                        android:title="@string/Album_Discussion" />
+                    <item
+                        android:id="@+id/Rock_Indie"
+                        android:title="@string/Rock_Indie" />
+                    <item
+                        android:id="@+id/Pop_RNB"
+                        android:title="@string/Pop_RNB" />
+                    <item
+                        android:id="@+id/TV_Film"
+                        android:title="@string/TV_Film" />
+                    <item
+                        android:id="@+id/Video_Games"
+                        android:title="@string/Video_Games" />
+                    <item
+                        android:id="@+id/Gadgeets_Tech"
+                        android:title="@string/Gadgets_Tech" />
+                    <item
+                        android:id="@+id/Sports"
+                        android:title="@string/Sports" />
+                    <item
+                        android:id="@+id/Life_Advice"
+                        android:title="@string/Life_Advice" />
+                    <item
+                        android:id="@+id/General_Discussion"
+                        android:title="@string/General_Discussion" />
+                    <item
+                        android:id="@+id/Relationship_Advice"
+                        android:title="@string/Relationship_Advice" />
+                    <item
+                        android:id="@+id/Fashion_Style"
+                        android:title="@string/Fashion_Style" />
+                    <item
+                        android:id="@+id/Marketplace"
+                        android:title="@string/Marketplace" />
+                    <item
+                        android:id="@+id/Creative_Showcase"
+                        android:title="@string/Creative_Showcase" />
+                    <item
+                        android:id="@+id/Art"
+                        android:title="@string/Art" />
+                    <item
+                        android:id="@+id/Mixtapes"
+                        android:title="@string/Mixtapes" />
+                    <item
+                        android:id="@+id/Writing"
+                        android:title="@string/Writing" />
+                </group>
+            </menu>
+        </item>
+        <item
+            android:id="@+id/Other_Artists"
+            android:title="@string/Other_Artists"
+            >
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/Drake"
+                        android:title="@string/Drake" />
+                    <item
+                        android:id="@+id/Kendrick_Lamar"
+                        android:title="@string/Kendrick_Lamar" />
+                    <item
+                        android:id="@+id/Travis_Scott"
+                        android:title="@string/travisscott"/>
+                    <item
+                        android:id="@+id/The_Weeknd"
+                        android:title="@string/The_Weeknd" />
+                    <item
+                        android:id="@+id/Kid_Cudi"
+                        android:title="@string/Kid_Cudi" />
+                    <item
+                        android:id="@+id/Lupe_Fiasco"
+                        android:title="@string/Lupe_Fiasco" />
+                    <item
+                        android:id="@+id/Odd_Future"
+                        android:title="@string/Odd_Future" />
+                </group>
+
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/Offtopic_Header"
+            android:title="@string/Offtopic_Header">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/Misc"
+                        android:title="@string/Misc" />
+                    <item
+                        android:id="@+id/Classic_GNG"
+                        android:title="@string/Classic_GG" />
+                </group>
+            </menu>
+        </item>
+    </group>
+    <!--Remember to add help and problem section here too-->
+
+</menu>

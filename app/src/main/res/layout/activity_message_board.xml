@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+
+    app:layout_behavior="@string/action_settings"
+    tools:context="com.st33fo.glideforktt.MessageBoard">
+
+  <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageAppBar"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:elevation="10dp"
+
+
+
+        >
+
+        <android.support.v7.widget.Toolbar
+
+            android:id="@+id/messageBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentInsetStart="0dp"
+            android:elevation="20dp"
+
+
+
+
+
+            >
+
+            <EditText
+                android:id="@+id/postsomethingEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginEnd="3dp"
+                android:layout_marginStart="3dp"
+                android:drawableEnd="@drawable/ic_send_grey600_24dp"
+                android:drawableLeft="@drawable/ic_emoticon_cool_grey600_24dp"
+                android:drawablePadding="20dp"
+                android:drawableRight="@drawable/ic_send_grey600_24dp"
+                android:drawableStart="@drawable/ic_emoticon_cool_grey600_24dp"
+                android:hint="Say Something"
+                android:textSize="16sp"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:maxHeight="112dp"
+                android:theme="@style/EditTextMessageBoard" />
+
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/coordinatorLayout"
+        android:layout_above="@id/messageAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+      >
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/messageboardAppbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/messageboardToolBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/MyToolbarStyle"
+                app:elevation="4dp"
+
+                app:layout_scrollFlags="scroll|enterAlwaysCollapsed|snap"
+
+                />
+
+        </android.support.design.widget.AppBarLayout>
+
+
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/messageBoardRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+</RelativeLayout>
