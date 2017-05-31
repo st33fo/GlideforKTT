@@ -69,6 +69,7 @@
     <string name="soundcloud"><a href="http://www.soundcloud.com/stefan-petit-freres-jr">SoundCloud</a></string>
     <string name="Info">Info</string>
     <string name="AboutMe">About Me</string>
+    <string name="action_logout">Logout</string>
     <string-array name="tabs">
         <item>Posts</item>
         <item>Topics</item>

@@ -14,6 +14,10 @@
     <item android:id="@+id/menu_Search"
         android:title="@string/action_search"
         />
+    <item android:id="@+id/action_logout"
+        android:title="@string/action_logout"
+        android:orderInCategory="103"
+        app:showAsAction="never" />
 
 </group>
     <item

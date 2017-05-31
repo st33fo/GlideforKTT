@@ -1,7 +1,9 @@
 package com.st33fo.glideforktt;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -275,6 +277,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 ////        new loadTopicData().execute();
 //
 //    }
+public static void clearUserName(Context ctx)
+{
+    SharedPreferences.Editor editor = SecuredSharePreference.getSecuredPreferences(ctx).edit();
+    editor.clear(); //clear all stored data
+    editor.commit();
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -283,6 +291,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
 
     }
+
 
 
     @Override
@@ -308,6 +317,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             clearData();
             new loadTopicData().execute();
 
+        }
+        if(id ==R.id.action_logout){
+            clearUserName(this);
+            Intent i = new Intent(this,Login.class);
+            startActivity(i);
         }
         if (id == R.id.action_previous_page) {
 
