@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "340017773024-0clroq5rd2cqgh10i98nvtho57q73hag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.st33fo.glideforktt",
+            "certificate_hash": "7e530826a824c0be837d40f55683f63c6fca93fc"
+          }
+        },
+        {
           "client_id": "340017773024-nial0qc4729j98psu6tp0mjvi329u8mq.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "340017773024-nial0qc4729j98psu6tp0mjvi329u8mq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
