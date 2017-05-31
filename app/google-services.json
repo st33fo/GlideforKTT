@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "340017773024",
+    "firebase_url": "https://glide-for-ktt.firebaseio.com",
+    "project_id": "glide-for-ktt",
+    "storage_bucket": "glide-for-ktt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:340017773024:android:3742fbd62ccf47e5",
+        "android_client_info": {
+          "package_name": "com.st33fo.glideforktt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "340017773024-nial0qc4729j98psu6tp0mjvi329u8mq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMnbuDL6SbW92w_5SFGagV-7ho-dVN_tc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
