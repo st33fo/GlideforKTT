@@ -44,6 +44,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.crashlytics.android.Crashlytics;
 import com.securepreferences.SecurePreferences;
 import com.squareup.picasso.Picasso;
 
@@ -60,6 +61,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -84,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String profileLink = "http://www.kanyetothe.com/forum/index.php?action=profile";
     private String profilePostLink ="http://www.kanyetothe.com/forum/index.php?action=profile;area=showposts";
     private String profileTopicsLink ="http://www.kanyetothe.com/forum/index.php?action=profile;area=showposts;sa=topics";
+
     /**
      * Way too lazy to reload data since it's already here
      * I'll take advantage of it here, but for other people goddamn it is gonna be a little harder...
@@ -116,6 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Log.i("System.out","There is something in the preferences");
             System.out.println(SecuredSharePreference.getPrefCookies(MainActivity.this));
             // Stay at the current activity.
+            Fabric.with(this, new Crashlytics());
             appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
 
             myToolBar = (Toolbar) findViewById(R.id.app_bar);
