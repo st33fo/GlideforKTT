@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,9 +87,10 @@ public class MessageBoardAdapter extends RecyclerView.Adapter<MessageBoardAdapte
         holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                 MessageBoard.setQuoteString(messageBoardObjects.get(position).getQuotelink());
                 Toast.makeText(context,"Quoted " + messageBoardObjects.get(position).getPerson(),Toast.LENGTH_SHORT).show();
-                return false;
+                return true;
             }
         });
         holder.profilepicture.setOnClickListener(new View.OnClickListener() {

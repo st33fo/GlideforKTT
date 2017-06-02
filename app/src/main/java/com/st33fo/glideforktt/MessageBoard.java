@@ -11,13 +11,18 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -46,6 +51,7 @@ public class MessageBoard extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Toolbar myMessageToolbar;
     private static EditText sendMessage;
+    private ImageButton sendIcon;
     private static String sessionId;
     private String URL = "";
     private String DefaultURL = "";
@@ -67,6 +73,8 @@ public class MessageBoard extends AppCompatActivity {
     private static String profileposts ="";
     private static String profileTopics ="";
 
+    private boolean firsttimeloading = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +85,9 @@ public class MessageBoard extends AppCompatActivity {
         myMessageToolbar = (Toolbar) findViewById(R.id.messageBar);
         sendMessage = (EditText) findViewById(R.id.postsomethingEditText);
         appBarLayout = (AppBarLayout) findViewById(R.id.messageboardAppbar);
+        sendIcon  = (ImageButton) findViewById(R.id.sendIcon);
+        sendIcon.setEnabled(false);
+
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -119,32 +130,82 @@ public class MessageBoard extends AppCompatActivity {
 
         new getMessages().execute();
 
-        sendMessage.setOnTouchListener(new View.OnTouchListener() {
+//        sendMessage.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                final int DRAWABLE_LEFT = 0;
+//                final int DRAWABLE_TOP = 1;
+//                final int DRAWABLE_RIGHT = 2;
+//                final int DRAWABLE_BOTTOM = 3;
+//
+//                if(event.getAction() == MotionEvent.ACTION_UP) {
+//                    if(event.getRawX() >= (sendMessage.getRight() - sendMessage.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+//                        messageText = sendMessage.getText().toString();
+//                        if(!messageText.equals("")){
+//
+//                            new SaySomething().execute();
+//                        }
+//
+//                        return true;
+//                    }
+//                    if(event.getRawX() <= (sendMessage.getCompoundDrawables()[DRAWABLE_LEFT].getBounds().width())){
+//
+//                        return true;
+//                    }
+//                }
+//                return false;
+//            }
+//        });
+
+/**
+ * Lets see if we can get a disabled icon up when the user puts something in the edit text versus when they don't
+ */
+        sendMessage.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                final int DRAWABLE_LEFT = 0;
-                final int DRAWABLE_TOP = 1;
-                final int DRAWABLE_RIGHT = 2;
-                final int DRAWABLE_BOTTOM = 3;
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (sendMessage.getRight() - sendMessage.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        messageText = sendMessage.getText().toString();
-                        if(!messageText.equals("")){
+            }
 
-                            new SaySomething().execute();
-                        }
-
-                        return true;
-                    }
-                    if(event.getRawX() <= (sendMessage.getCompoundDrawables()[DRAWABLE_LEFT].getBounds().width())){
-
-                        return true;
-                    }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(charSequence.toString().trim().equals("")){
+                    sendIcon.setImageResource(R.drawable.ic_send);
+                    sendIcon.setEnabled(false);
+                }else{
+                    sendIcon.setImageResource(R.drawable.ic_send_grey600_24dp);
+                    sendIcon.setEnabled(true);
                 }
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
+        sendIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                messageText = sendMessage.getText().toString();
+                if(!messageText.trim().equals("")){
+                            sendIcon.setEnabled(false);
+                            sendIcon.setImageResource(R.drawable.ic_send);
+                            new SaySomething().execute();
+
+                        }else{
+                    Toast.makeText(MessageBoard.this,"You gotta say something",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        sendIcon.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                return true;
+            }
+        });
+        /**
+         * I am going to do a proper image button implementation here. Not that bullshit I had before
+         */
 
 
     }
@@ -160,12 +221,9 @@ public class MessageBoard extends AppCompatActivity {
 
         int id = item.getItemId();
         if (id == R.id.menu_refresh) {
-            messageText = sendMessage.getText().toString();
-            if(!messageText.equals("")){
 
-                new SaySomething().execute();
                     }
-        }
+
         if (item.getItemId() == android.R.id.home) {
             finish();
         }
@@ -190,9 +248,11 @@ public class MessageBoard extends AppCompatActivity {
         Document messageBoard;
         String appbarTitle;
 
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
 
 
         }
@@ -307,7 +367,10 @@ public class MessageBoard extends AppCompatActivity {
 
                 new getMessages().execute();
 
+
             }
+
+
 
 
 
@@ -376,6 +439,7 @@ public class MessageBoard extends AppCompatActivity {
             clearData();
             recyclerView.removeAllViews();
             sendMessage.setText("");
+
             new getMessages().execute();
 
 
