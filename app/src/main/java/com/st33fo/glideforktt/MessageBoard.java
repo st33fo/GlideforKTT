@@ -130,32 +130,7 @@ public class MessageBoard extends AppCompatActivity {
 
         new getMessages().execute();
 
-//        sendMessage.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                final int DRAWABLE_LEFT = 0;
-//                final int DRAWABLE_TOP = 1;
-//                final int DRAWABLE_RIGHT = 2;
-//                final int DRAWABLE_BOTTOM = 3;
-//
-//                if(event.getAction() == MotionEvent.ACTION_UP) {
-//                    if(event.getRawX() >= (sendMessage.getRight() - sendMessage.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-//                        messageText = sendMessage.getText().toString();
-//                        if(!messageText.equals("")){
-//
-//                            new SaySomething().execute();
-//                        }
-//
-//                        return true;
-//                    }
-//                    if(event.getRawX() <= (sendMessage.getCompoundDrawables()[DRAWABLE_LEFT].getBounds().width())){
-//
-//                        return true;
-//                    }
-//                }
-//                return false;
-//            }
-//        });
+
 
 /**
  * Lets see if we can get a disabled icon up when the user puts something in the edit text versus when they don't

@@ -45,6 +45,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.crashlytics.android.Crashlytics;
+import com.evernote.android.job.Job;
+import com.evernote.android.job.JobManager;
 import com.securepreferences.SecurePreferences;
 import com.squareup.picasso.Picasso;
 
@@ -53,6 +55,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 
 
 import java.io.InputStream;
@@ -108,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
 
+
         if (SecuredSharePreference.getPrefCookies(MainActivity.this).length() == 0)
 
         {
@@ -121,6 +125,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             System.out.println(SecuredSharePreference.getPrefCookies(MainActivity.this));
             // Stay at the current activity.
             Fabric.with(this, new Crashlytics());
+            JobManager.create(this).addJobCreator(new KTTJobCreator());
+            ShowNotificationJob.schedulePeriodic();
             appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
 
             myToolBar = (Toolbar) findViewById(R.id.app_bar);
@@ -159,6 +165,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
         }
+
+
 
         // Stay at the current activity.
 
