@@ -49,20 +49,22 @@ public class ShowNotificationJob extends Job {
             notificationpage = new GetDocument(getContext()).GetDocument(notificationURL);
             navbar = notificationpage.select("ul[id=navigation");
             getNotificationCount= navbar.select("li[id=notification_li").text();
-            if(getNotificationCount.contains("Notification")){
-                getNotificationCount = getNotificationCount.replace("Notification","");
+            if(getNotificationCount.contains("Notifications")){
+                getNotificationCount = getNotificationCount.replace(" Notifications","").trim();
+                notificationnumber = Integer.parseInt(getNotificationCount);
             }else {
-                getNotificationCount = getNotificationCount.replace(" Notifications", "");
+                getNotificationCount = getNotificationCount.replace(" Notification", "").trim();
                 notificationnumber = Integer.parseInt(getNotificationCount);
             }
+
+            System.out.println(notificationnumber);
 
             if(notificationnumber>0){
                 notifnumber++;
                 Elements notifpage =notificationpage.select("div[id=cmn_wrap").select("div[id=page]").select("ul[class=notifications]");
                 String profile = notifpage.select("li").select("a[href]").get(0).text();
                 String thread = notifpage.select("li").select("a[href]").get(1).text();
-                Log.i("system.out",getNotificationCount);
-                System.out.println(getNotificationCount);
+
 
                 Notification groupBuilder =
                         new NotificationCompat.Builder(getContext())
@@ -71,10 +73,11 @@ public class ShowNotificationJob extends Job {
                                 .setGroup("KTT")
                                 .setNumber(2)
                                 .setContentIntent(pi)
+                                .setAutoCancel(true)
                                 .build();
 
                 Notification notification = new NotificationCompat.Builder(getContext())
-                        .setContentTitle(profile+ " Quoted You")
+                        .setContentTitle(profile)
                         .setContentText(thread)
                         .setAutoCancel(true)
                         .setContentIntent(pi)
@@ -82,6 +85,7 @@ public class ShowNotificationJob extends Job {
                         .setWhen(System.currentTimeMillis())
                         .setShowWhen(true)
                         .setGroup("KTT")
+                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                         .setNumber(++notifnumber)
                         .build();
 
