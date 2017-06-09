@@ -5,7 +5,10 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.os.AsyncTask;
+import android.renderscript.RenderScript;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.NotificationCompat;
@@ -19,6 +22,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -37,8 +41,11 @@ public class ShowNotificationJob extends Job {
     @NonNull
     @Override
     protected Result onRunJob(Params params) {
-        PendingIntent pi = PendingIntent.getActivity(getContext(), 0,
-                new Intent(getContext(), MainActivity.class), 0);
+        Intent messageBoard = new Intent(getContext(),MessageBoard.class);
+
+
+
+
 
         Document notificationpage;
         String getNotificationCount=null;
@@ -59,11 +66,19 @@ public class ShowNotificationJob extends Job {
 
             System.out.println(notificationnumber);
 
+
             if(notificationnumber>0){
                 notifnumber++;
                 Elements notifpage =notificationpage.select("div[id=cmn_wrap").select("div[id=page]").select("ul[class=notifications]");
                 String profile = notifpage.select("li").select("a[href]").get(0).text();
                 String thread = notifpage.select("li").select("a[href]").get(1).text();
+                String URL = "http://www.kanyetothe.com"+notifpage.select("li").select("a[href]").get(1).attr("href");
+
+                System.out.println(URL);
+                messageBoard.putExtra("URL",URL);
+                PendingIntent pi = PendingIntent.getActivity(getContext(), UUID.randomUUID().hashCode(), messageBoard, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
 
 
                 Notification groupBuilder =
@@ -72,8 +87,10 @@ public class ShowNotificationJob extends Job {
                                 .setSmallIcon(R.drawable.ic_format_quote_white_48dp)
                                 .setGroup("KTT")
                                 .setNumber(2)
+
                                 .setContentIntent(pi)
                                 .setAutoCancel(true)
+
                                 .build();
 
                 Notification notification = new NotificationCompat.Builder(getContext())
@@ -85,7 +102,9 @@ public class ShowNotificationJob extends Job {
                         .setWhen(System.currentTimeMillis())
                         .setShowWhen(true)
                         .setGroup("KTT")
-                        .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
+                        .setPriority(Notification.PRIORITY_HIGH)
+                        .setVibrate(new long[] { 100,300,300,300,300 })
+           //later             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALL))
                         .setNumber(++notifnumber)
                         .build();
 

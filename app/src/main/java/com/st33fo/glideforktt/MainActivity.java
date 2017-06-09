@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         URL.substring(URL.lastIndexOf(".") + 1), "" + whichpage);
 
                 threadDocument = new GetDocument(MainActivity.this).GetDocument(URL);
+
                 Elements topics = threadDocument.getElementsByTag("tr");
                 for (Element topic : topics) {
                     threadObject = new ThreadObject();

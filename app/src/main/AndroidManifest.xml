@@ -10,7 +10,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".MainActivity"
@@ -37,18 +36,17 @@
             android:name=".MessageBoard"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/MessageBoard"
-            android:theme="@style/LoginTheme"/>
-        <activity android:name=".ProfilePage"
+            android:theme="@style/LoginTheme" />
+        <activity
+            android:name=".ProfilePage"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/Profile_Page"
-            android:theme="@style/LoginTheme"
-            >
+            android:theme="@style/LoginTheme"></activity>
 
-        </activity>
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="85b1b7b8c39325b9d6f72d0601b60ecf77d53d20"
-            />
+            android:value="85b1b7b8c39325b9d6f72d0601b60ecf77d53d20" />
+
     </application>
 
 </manifest>

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
+    android:id="@+id/bigdaddy"
+
 
     app:layout_behavior="@string/action_settings"
     tools:context="com.st33fo.glideforktt.MessageBoard">
@@ -27,6 +29,7 @@
             app:contentInsetStart="0dp">
 
             <RelativeLayout
+                android:id="@+id/toolbarRelativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -76,6 +79,9 @@
 
 
         </android.support.v7.widget.Toolbar>
+        <include layout ="@layout/emoji_gridview">
+
+        </include>
 
     </android.support.design.widget.AppBarLayout>
 

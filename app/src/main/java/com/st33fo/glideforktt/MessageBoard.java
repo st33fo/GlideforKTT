@@ -1,36 +1,39 @@
 package com.st33fo.glideforktt;
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
+
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -40,18 +43,15 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CountDownLatch;
 
 public class MessageBoard extends AppCompatActivity {
     private Toolbar mToolbar;
     private RecyclerView recyclerView;
     private Toolbar myMessageToolbar;
-    private static EditText sendMessage;
+    protected static EditText sendMessage;
     private ImageButton sendIcon;
+    private ImageButton emojiIcon;
     private static String sessionId;
     private String URL = "";
     private String DefaultURL = "";
@@ -67,14 +67,25 @@ public class MessageBoard extends AppCompatActivity {
     private ProgressBar progressBar;
     private Handler mHandler = new Handler();
     private AppBarLayout appBarLayout;
+    private AppBarLayout messageAppBar;
     private  Connection.Response profileConnection;
     private static String quotelink = "";
     private static String profileLink="";
     private static String profileposts ="";
     private static String profileTopics ="";
+    private RelativeLayout relativeLayout;
+    private View v;
+    private AppBarLayout.LayoutParams layoutParams;
+    private RecyclerView emojiGridView;
+    private RelativeLayout gridlinear;
+    private List<EmojiObject> list;
+    private GridLayoutManager gridLayoutManager;
+    private InputMethodManager imm;
+    private boolean selectEmoji = false;
 
-    private boolean firsttimeloading = true;
 
+
+private Window mRootWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +97,33 @@ public class MessageBoard extends AppCompatActivity {
         sendMessage = (EditText) findViewById(R.id.postsomethingEditText);
         appBarLayout = (AppBarLayout) findViewById(R.id.messageboardAppbar);
         sendIcon  = (ImageButton) findViewById(R.id.sendIcon);
+        emojiGridView = (RecyclerView)findViewById(R.id.emoji_gridview);
+        emojiGridView.setVisibility(View.GONE);
+
+
+
+
+
+
+
+
+
+
+
+
+        messageAppBar = (AppBarLayout)findViewById(R.id.messageAppBar);
+
+
+        /**put in onclicklistener*/
+
         sendIcon.setEnabled(false);
+        emojiIcon = (ImageButton) findViewById(R.id.emojiIcon);
+
+
+
+
+
+
 
 
         setSupportActionBar(mToolbar);
@@ -135,6 +172,13 @@ public class MessageBoard extends AppCompatActivity {
 /**
  * Lets see if we can get a disabled icon up when the user puts something in the edit text versus when they don't
  */
+        sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(emojiGridView.getVisibility()==View.VISIBLE)
+                    emojiGridView.setVisibility(View.GONE);
+            }
+        });
         sendMessage.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -156,7 +200,9 @@ public class MessageBoard extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
             }
+
         });
+
         sendIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,9 +227,45 @@ public class MessageBoard extends AppCompatActivity {
         /**
          * I am going to do a proper image button implementation here. Not that bullshit I had before
          */
+        emojiIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(selectEmoji);
+    if(emojiGridView.getVisibility()==View.VISIBLE) {
 
+        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+        emojiGridView.setVisibility(View.GONE);
+    }else{
+
+        emojiGridView.setVisibility(View.VISIBLE);
+        if(selectEmoji){
+            imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
+        }
+        selectEmoji=true;
+
+            list = EmojiListCreator.PopulateList(MessageBoard.this);
+            emojiGridView = (RecyclerView) findViewById(R.id.emoji_gridview);
+            gridLayoutManager = new GridLayoutManager(MessageBoard.this, 7);
+
+            emojiGridView.setHasFixedSize(true);
+            emojiGridView.setLayoutManager(gridLayoutManager);
+            EmojiAdapter emojiAdapter = new EmojiAdapter(MessageBoard.this, list);
+            emojiGridView.setAdapter(emojiAdapter);
 
     }
+
+
+
+
+            }
+        });
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -243,14 +325,20 @@ public class MessageBoard extends AppCompatActivity {
                 String navpages = messageBoard.select("div[id=board_top_info]").select("div[class=forum_pages]").select("strong").text();
                 appbarTitle = messageBoard.select("div[id=board_top_info]").select("h2[class=board_title]").text();
 
-
-                String cutURL = URL.substring(URL.lastIndexOf("."));
-                URL = URL.replace(cutURL, "");
+                if(URL.contains("topic")) {
+                    String cutURL = URL.substring(URL.lastIndexOf("."));
+                    URL = URL.replace(cutURL, "");
+                }else{
+                    URL = messageBoard.select("div[id=board_top_info]").select("div[class=forum_pages]").select("a[class=navPages").last().attr("href");
+                    String cutURL = URL.substring(URL.lastIndexOf("."));
+                    URL = URL.replace(cutURL, "");
+                }
 
                 navPageNumber = Integer.parseInt(navpages);
 
                 navPageNumber = 18 * (navPageNumber - 1);
                 URL = URL + "." + navPageNumber;
+                System.out.println("Editted url is" + messageBoard.location());
                 for (int x = messages.size() - 1; x >= 0; x--) {
                     String quote = messages.get(x).select("blockquote[class=bbc_standard_quote]").text();
                     Elements quotes = messages.get(x).select("blockquote[class=bbc_standard_quote]");
@@ -448,7 +536,9 @@ public class MessageBoard extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            sendMessage.setText(messageText);
+            String previoustext = sendMessage.getText().toString();
+            sendMessage.setText(previoustext+"\n"+messageText);
+            sendMessage.setSelection(sendMessage.length());
             super.onPostExecute(aVoid);
         }
     }
@@ -493,6 +583,8 @@ public class MessageBoard extends AppCompatActivity {
         public void onScrolledToBottom() {
         }
     }
+
+
     public static String getTopics(){
        return profileTopics;
     }
