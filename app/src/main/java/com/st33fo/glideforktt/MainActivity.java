@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             System.out.println(SecuredSharePreference.getPrefCookies(MainActivity.this));
             // Stay at the current activity.
             Fabric.with(this, new Crashlytics());
-            JobManager.create(this).addJobCreator(new KTTJobCreator());
+
             ShowNotificationJob.schedulePeriodic();
             appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
 
