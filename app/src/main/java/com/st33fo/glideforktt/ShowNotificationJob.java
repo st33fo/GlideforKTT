@@ -64,7 +64,7 @@ public class ShowNotificationJob extends Job {
                 notificationnumber = Integer.parseInt(getNotificationCount);
             }
 
-            System.out.println(notificationnumber);
+            //System.out.println(notificationnumber);
 
 
             if(notificationnumber>0){
