@@ -13,7 +13,7 @@ The real meat lies in the app folder.
 
 **Java Files**
 
-Clicking the app folder followed by src, then main, you'll see a java/com/st33fo/glideforktt folder and a res folder. Let's dive into the java folder. There are 23 .java files in total (hopefully we'll have some more!) 
+Clicking the app folder followed by src, then main, you'll see a java/com/st33fo/glideforktt folder and a res folder. Let's dive into the java folder. There are 29 .java files in total (hopefully we'll have some more!) 
 
 The first file starts in the tabs folder which contains the **slidingtablayout** as well as the **slidingstrip** tab. The slidingtablayout and slidingstrip both contain open sourced code I used for the profile page view which utilizes the sliding tab layout.
 
