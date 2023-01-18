@@ -23,7 +23,7 @@ The code in here isn't really changed as it's a straight forward implementation.
 
 The next java file would be the **endlessrecyclerviewscrolllistener.** Again, this is more code that's used in implementation. It's used to scroll up infinitely in the thread to see all previous replies.
 
-[infinite scroll example](https://gfycat.com/UnkemptIckyLadybird)
+[infinite scroll example]
 
 Next up is **Feed.java**. This is the recents feed that the KTT website features. It updates with new posts every couple of seconds. Unfortunately my app can't do that and probably won't because updating every 3 seconds and refreshing the recyclerview is probably annoying. Although, I'm not opposed to having some kind of time interval for automatic refreshing or a snackbar alerting of new posts. The feed.java utilizes the feed objects that I put into the cards such as the subject, the author, the time posted, and other parameters. It places them in a vertical list that can be scrolled down on and refreshed. It gets these posts via a volley document request. This is what gets the information. It's not up as of today, but feed.java should utilize the GetDocument.java class for getting the website not the subclass it currently uses. I use Jsoup to analyze the html and grab the information I need to stuff into the author, title, time posted, etc... Using forloops, I'm able to place a new feedobject in an arraylist  for every feed message.
 
@@ -33,7 +33,7 @@ Next up is **Feed.java**. This is the recents feed that the KTT website features
 
 **FollowerListAdapter** and **FollowerObject** both contribute to the **ProfileFollowersfragment**. The follower object contains the URL of the profile and the name of the profile. Currently the url under the profile objects won't do anything, but via onClick, it will lead to the profile page of that member. Combined with the adapter, these are put in a recyclerview within a fragment under the sliding tabs. Here's a gif to clear up what I mean with this description.
 
-[Profile follower view](https://gfycat.com/NiceTenseEmu)
+[Profile follower view]
 
 Next is the **GetDocument.java class**. This class allows me to perform queries for the URLs I need. For any class that needs to lookup something they'll call a new GetDocument(Context).GetDocument(URL). Jsoup will then parse the Document object returned from this GetDocument initialization. Within the GetDocument class exists the context and the sessionID. The context will change depending on which class called the method, but the sessionID is the unique ID I use to store login information. There are no passwords stored in this application. Only the sessionID is stored locally via a SharedPreference library I use called SecuredSharedPreference. After that, it's pretty much just a string GET request and I use headers to put in the user agent and the sessionID. On every search this class is called to ensure the user is still signed in after retrieving the information he/she needs.
 
@@ -53,7 +53,7 @@ Next is **messageboard.java**. Every thread clicked on in the main activity lead
 **ProfileFollowersFragment.java** is one of the 3 important fragments needed to make up the profile page in this application. A fragment is kind of like a sub-activity that can hold its own "things" and have its own ui like a normal activity. It can contain whatever you want in it, that includes recyclerviews. Fragments are important because sometimes the user wants to be able to see multiple clumps of different types of info in the same page without having to leave it or go back. It's a bit confusing, but hopefully you'll see what I'm trying to convey with this gif.
 
 
-[fragment example](https://gfycat.com/TepidBriefArrowworm)
+[fragment example]
 
 The first fragment is the profilepostsfragment. This *inflates* or binds a layout in the res folder that features a recyclerview which stores the posts the user sends. The second fragment when you swipe to the left is the profiletopicsfragment. This one also inflates some layout that features a recyclerview that holds the topics you create. Finally another swipe lands you to the third fragment, the profilefollowersfragment which inflates a recyclerview layout with info on your followers. Notice how I didn't have to leave the ProfilePage.java activity which all of these fragments are under. You still see my profile name at the top. I just made these three quickly accessible with a couple of swipes. I could've made separate activities for them yes, but notice how that wouldn't be very efficient. Information like this should be grouped together. 
 
